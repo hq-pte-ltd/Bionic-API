@@ -16,7 +16,8 @@ const {
   getDownloadURL,
 } = require('firebase/storage');
 
-const pdfCoApiKey = process.env.PDFCOAPIKEY || 
+const pdfCoApiKey =
+  process.env.PDFCOAPIKEY ||
   'tetannuz@gmail.com_06afec6ab72c8477278a19818d03fba37fa02057fc86e1234d6904363699f7e442e83b5a';
 
 const firebaseConfig = {
@@ -31,16 +32,20 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const storage = getStorage(firebase);
 
-const pdfToBionicWithApi = require('./parser/pdfToBionicWithApi');
-const pdfToBionicNoApi = require('./parser/pdfToBionicNoApi');
+const pdfToBionicWithApi = require('./src/parser/pdfToBionicWithApi');
+const pdfToBionicNoApi = require('./src/parser/pdfToBionicNoApi');
 
 app.post('/api/bionic', async (req, res) => {
   try {
     const files = await pdfToBionicNoApi(req.body.url);
-    const filename = path.posix.basename(url.parse(req.body.url).pathname, ".pdf");
+    const filename = path.posix.basename(
+      url.parse(req.body.url).pathname,
+      '.pdf',
+    );
 
     if (files.error) {
-      const status = typeof files.status !== 'number' ? files.errorCode : files.status;
+      const status =
+        typeof files.status !== 'number' ? files.errorCode : files.status;
       res.status(status).json(files);
       return;
     }
@@ -56,15 +61,14 @@ app.post('/api/bionic', async (req, res) => {
     console.log('Uploaded.');
 
     res.status(201).json({ htmlUrl });
-
   } catch (err) {
     console.log(err);
     res.status(500).json({
       error: true,
-      message: 'Error occurred while converting or uploading. Please view server logs for more details.'
+      message:
+        'Error occurred while converting or uploading. Please view server logs for more details.',
     });
   }
-
 });
 
 const port = process.env.PORT || 4000;
