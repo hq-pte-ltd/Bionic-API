@@ -1,7 +1,7 @@
 node_modules/
+dist
+logs
+*.log
+npm-debug.log
+.DS_Store
 .env
-package-lock.json
-.vscode
-result.html
-bionic.html
-bionic.pdf
