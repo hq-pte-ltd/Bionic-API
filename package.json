@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "node-fetch": "2",
     "nodemon": "^2.0.20",
     "pdf-parse": "^1.1.1",
+    "pdf.js-extract": "^0.2.1",
     "text-vide": "^1.6.0"
   }
 }
-

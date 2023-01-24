@@ -1,5 +1,5 @@
-const { textVide } = require('text-vide');
-const html2pdf = require('html-pdf-node');
+const { textVide } = require("text-vide");
+const html2pdf = require("html-pdf-node");
 
 /**
  * Convert text to bionic
@@ -8,12 +8,24 @@ const html2pdf = require('html-pdf-node');
  * @returns {Promise<Buffer>}	Buffer of pdf file and html file
  */
 
-const toBionic = async (text, format = 'A4') => {
-	text = text.toString();
+const toBionic = async (text, format = "A4") => {
+  text = text.toString();
 
-	const bionicHtml = `
+  const bionicHtml = `
 	<!DOCTYPE html>
 	<html lang="en">
+  <style>
+  body {
+    white-space: pre-line;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1px;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,17 +42,12 @@ const toBionic = async (text, format = 'A4') => {
 	</body>
 	</html>`;
 
-	// const bionicBody = textVide(body);
-	// const bionicHtml = head.concat(head, '</head>', bionicBody);
+  // const bionicBody = textVide(body);
+  // const bionicHtml = head.concat(head, '</head>', bionicBody);
 
-	const pdf = await html2pdf.generatePdf(
-		{ content: bionicHtml },
-		{ format }
-	);
+  const pdf = await html2pdf.generatePdf({ content: bionicHtml }, { format });
 
-
-
-	return { pdf, html: Buffer.from(bionicHtml, 'utf-8') };
+  return { pdf, html: Buffer.from(bionicHtml, "utf-8") };
 };
 
 /**
@@ -54,6 +61,6 @@ const toBionic = async (text, format = 'A4') => {
 const writeToBionic = async (html, options) => {};
 
 module.exports = {
-	toBionic,
-	writeToBionic,
+  toBionic,
+  writeToBionic,
 };
