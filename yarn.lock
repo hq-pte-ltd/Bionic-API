@@ -927,11 +927,6 @@
   dependencies:
     "domelementtype" "1"
 
-"dommatrix@0.0.24":
-  "integrity" "sha512-PatEhAW5pIHr28MvFQGV5iiHNloqvecQZlxs7/8s/eulLqZI3uVqPkrO7YDuqsebovr/9mmcWDSWzVG4amEZgQ=="
-  "resolved" "https://registry.npmjs.org/dommatrix/-/dommatrix-0.0.24.tgz"
-  "version" "0.0.24"
-
 "domutils@^1.5.1", "domutils@1.5.1":
   "integrity" "sha512-gSu5Oi/I+3wDENBsOWBiRK1eoGxcywYSqg3rR960/+EfY0CF4EX1VPkgHOZ3WiS/Jg2DtliF6BhWcHlfpYUcGw=="
   "resolved" "https://registry.npmjs.org/domutils/-/domutils-1.5.1.tgz"
@@ -1890,14 +1885,6 @@
     "debug" "^3.1.0"
     "node-ensure" "^0.0.0"
 
-"pdf.js-extract@^0.2.1":
-  "integrity" "sha512-oUs5KaTVCelIyiBajCx3zAZKurkN9oVwRdqbSeDqeofddxNuwJRur86fCETvKZ/tX5nZJUSZWq3ie76PsArz7A=="
-  "resolved" "https://registry.npmjs.org/pdf.js-extract/-/pdf.js-extract-0.2.1.tgz"
-  "version" "0.2.1"
-  dependencies:
-    "dommatrix" "0.0.24"
-    "web-streams-polyfill" "3.2.0"
-
 "pend@~1.2.0":
   "integrity" "sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg=="
   "resolved" "https://registry.npmjs.org/pend/-/pend-1.2.0.tgz"
@@ -2460,11 +2447,6 @@
   dependencies:
     "acorn" "^8.7.0"
     "acorn-walk" "^8.2.0"
-
-"web-streams-polyfill@3.2.0":
-  "integrity" "sha512-EqPmREeOzttaLRm5HS7io98goBgZ7IVz79aDvqjD0kYXLtFZTc0T/U6wHTPKyIjb+MdN7DFIIX6hgdBEpWmfPA=="
-  "resolved" "https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-3.2.0.tgz"
-  "version" "3.2.0"
 
 "webidl-conversions@^3.0.0":
   "integrity" "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
