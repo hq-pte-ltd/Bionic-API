@@ -46,7 +46,7 @@ const pdfToBionicWithApi = require("./src/parser/pdfToBionicWithApi");
 const pdfToBionicNoApi = require("./src/parser/pdfToBionicNoApi");
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello Bionic!");
 });
 
 app.post("/api/bionic", async (req, res) => {
