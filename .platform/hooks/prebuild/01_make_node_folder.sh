@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir -p node_modules
+mkdir node_modules
