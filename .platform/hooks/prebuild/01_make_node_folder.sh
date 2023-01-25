@@ -1,2 +1,3 @@
 #!/bin/bash
-mkdir node_modules
+mkdir -p node_modules
+npm i
