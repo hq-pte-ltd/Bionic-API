@@ -12,7 +12,7 @@ const url = require("url");
 
 class BionicController {
   constructor() {
-    
+      
   }
 
   async test(req, res) {

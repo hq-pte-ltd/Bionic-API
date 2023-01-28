@@ -16,15 +16,26 @@ app.use((req, res, next) => {
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hey Bionic!");
+  res.send("Hey Bionic!!!");
 });
 
 const bionicControllerClass = require("./controllers/bionic.controller");
 const bionicController = new bionicControllerClass();
 const checkIfAuthenticated = require("./middlewares/auth.middleware");
+const checkEmailVerified = require("./middlewares/emailVerified.middleware");
 
-app.post("/api/bionic", checkIfAuthenticated, bionicController.convertToBionic);
-app.get("/api/bionic", checkIfAuthenticated, bionicController.test);
+app.post(
+  "/api/bionic",
+  checkIfAuthenticated,
+  checkEmailVerified,
+  bionicController.convertToBionic
+);
+app.get(
+  "/api/bionic",
+  checkIfAuthenticated,
+  checkEmailVerified,
+  bionicController.test
+);
 
 const port = process.env.PORT || 8081;
 app.listen(port, () => {

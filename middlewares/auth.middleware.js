@@ -1,5 +1,5 @@
-const admin = require("../services/firebase-admin.service");
 
+const admin = require("../services/firebase-admin.service");
 const getAuthToken = (req, res, next) => {
   if (
     req.headers.authorization &&
@@ -16,18 +16,17 @@ const checkIfAuthenticated = (req, res, next) => {
   getAuthToken(req, res, async () => {
     try {
       const { authToken } = req;
-      const userInfo = await admin
-        .auth()
-        .verifyIdToken(authToken);
-      req.authId = userInfo.uid;
+      const userInfo = await admin.auth().verifyIdToken(authToken);
+      console.log(userInfo.firebase);
+      req.user = userInfo;
       return next();
     } catch (e) {
-      console.log({e})
+      console.log({ e });
       return res
         .status(401)
-        .send({ error: 'You are not authorized to make this request' });
+        .send({ error: "You are not authorized to make this request." });
     }
   });
-}
+};
 
 module.exports = checkIfAuthenticated;
