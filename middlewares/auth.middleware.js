@@ -17,7 +17,6 @@ const checkIfAuthenticated = (req, res, next) => {
     try {
       const { authToken } = req;
       const userInfo = await admin.auth().verifyIdToken(authToken);
-      console.log(userInfo.firebase);
       req.user = userInfo;
       return next();
     } catch (e) {

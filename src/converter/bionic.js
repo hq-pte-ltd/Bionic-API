@@ -8,9 +8,9 @@ const html2pdf = require("html-pdf-node");
  * @returns {Promise<Buffer>}	Buffer of pdf file and html file
  */
 
-const toBionic = async (text, format = "A4") => {
+const toBionic = async (text, styles, format = "A4") => {
   text = text.toString();
-
+  const { spread, weight, letterSpacing, lineHeight } = styles;
   const bionicHtml = `
 	<!DOCTYPE html>
 	<html lang="en">
@@ -19,11 +19,12 @@ const toBionic = async (text, format = "A4") => {
     white-space: pre-line;
     font-family: "Arial", sans-serif;
     font-size: 14px;
-    line-height: 2;
-    letter-spacing: 1px;
+    line-height: ${lineHeight / 2}rem;
+    letter-spacing: ${letterSpacing / 20}rem;
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-weight: ${weight};
   }
   </style>
 	<head>
@@ -36,7 +37,10 @@ const toBionic = async (text, format = "A4") => {
 	<body>
 		<div class="container">
 			<p class="bionic-text">
-			${textVide(text)}
+			${textVide(text, {
+        fixationPoint: spread,
+        sep: ["<strong>", "</strong>"],
+      })}
 			</p>
 		</div>
 	</body>

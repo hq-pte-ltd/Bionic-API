@@ -30,6 +30,7 @@ app.post(
   checkEmailVerified,
   bionicController.convertToBionic
 );
+
 app.get(
   "/api/bionic",
   checkIfAuthenticated,

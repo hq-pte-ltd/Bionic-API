@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 const { toBionic } = require("../converter/bionic");
 
-const pdfToBionicNoApi = async (fileUrl) => {
+const pdfToBionicNoApi = async (fileUrl, styles) => {
   if (typeof fileUrl === "undefined") {
     throw new Error("PDFParser: No file path specified.");
   }
@@ -47,7 +47,7 @@ const pdfToBionicNoApi = async (fileUrl) => {
 
   if (result) {
     const { text } = result;
-    const bionic = toBionic(text);
+    const bionic = toBionic(text, styles);
     return bionic;
   } else {
     throw new Error("PDFParser: Error parsing PDF file");

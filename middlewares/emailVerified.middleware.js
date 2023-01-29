@@ -1,6 +1,6 @@
 const checkEmailVerified = (req, res, next) => {
   const { user } = req;
-  if (user.emailVerified) {
+  if (user.email_verified) {
     return next();
   }
   return res.status(401).send({

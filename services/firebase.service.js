@@ -5,6 +5,7 @@ const {
   uploadBytes,
   getDownloadURL,
 } = require("firebase/storage");
+const { getFirestore } = require("firebase/firestore");
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -18,5 +19,6 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 const storage = getStorage(firebase);
+const db = getFirestore(firebase);
 
-module.exports = { ref, uploadBytes, getDownloadURL, storage };
+module.exports = { ref, uploadBytes, getDownloadURL, storage, db };
