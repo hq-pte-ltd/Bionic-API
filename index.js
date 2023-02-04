@@ -24,6 +24,7 @@ const bionicController = new bionicControllerClass();
 const checkIfAuthenticated = require("./middlewares/auth.middleware");
 const checkEmailVerified = require("./middlewares/emailVerified.middleware");
 
+
 app.post(
   "/api/bionic",
   checkIfAuthenticated,

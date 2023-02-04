@@ -40,12 +40,8 @@ class BionicController {
 
   async convertToBionic(req, res) {
     try {
-      const { styles } = req.body;
+      const { styles, fileName } = req.body;
       const files = await pdfToBionicNoApi(req.body.url, styles);
-      const filename = path.posix.basename(
-        url.parse(req.body.url).pathname,
-        ".pdf"
-      );
 
       if (files.error) {
         const status =
@@ -53,7 +49,9 @@ class BionicController {
         return res.status(status).json(files);
       }
 
-      const htmlRef = ref(storage, `bionic_files/${filename}.html`);
+      const name = fileName.split(".").slice(0, -1).join(".") + "_CONVERTED_BY_READGRASP.COM";
+
+      const htmlRef = ref(storage, `bionic_files/${name}.html`);
       const htmlSnapshot = await uploadBytes(htmlRef, files.html);
       const htmlUrl = await getDownloadURL(htmlSnapshot.ref);
 
